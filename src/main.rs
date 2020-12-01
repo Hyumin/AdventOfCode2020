@@ -25,12 +25,42 @@ fn Day1_1ProccessInput( _arg: &[i32])
     //display results
     for i in &results
     {
-        println!("Result is: {}",i);
+        println!("Result method 1 is: {}",i);
+    }
+}
+//process input, prints the results
+fn Day1_2ProccessInput( _arg: &[i32])
+{
+    if _arg.len() ==0
+    {
+        println!("can't procces zero length arrays");
+        return;
+    }
+    let mut results = vec![0; 0];
+
+    for  i in 0.. _arg.len()-2
+    {
+        //Check starting from current index if any sum of the numbers are equal to 2020
+        for j in i+1.. _arg.len()-1
+        {
+            for k in j+1.._arg.len()
+            {
+                if _arg[i]+_arg[j]+_arg[k] == 2020
+                {
+                    results.push(_arg[i]*_arg[j]*_arg[k]);
+                }
+            }
+        }
+    }
+    //display results
+    for i in &results
+    {
+        println!("Result method 2 is: {}",i);
     }
 }
 
 
-fn Day1_1()
+fn Day1()
 {
   //Default input
   let integers = vec![1721,979,366,299,675,1456];
@@ -65,11 +95,11 @@ fn Day1_1()
   }
 
   Day1_1ProccessInput(&inputIntegers);
-
+  Day1_2ProccessInput(&inputIntegers);
 }
 
 fn main() 
 {
     println!("Day 1 puzzle 1!");
-    Day1_1();
+    Day1();
 }
