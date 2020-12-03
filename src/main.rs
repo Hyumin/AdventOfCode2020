@@ -3,6 +3,8 @@ use std::vec;
 use num;
 use num::clamp;
 
+mod day_3;
+
 //process input, prints the results
 fn Day1_1ProccessInput( arg: &[i32])
 {
@@ -324,6 +326,9 @@ fn main()
    // println!("Day 1!");
     //Day1();
     
-    println!("Day 2!");
-    Day2();
+   // println!("Day 2!");
+  //  Day2();
+
+    println!("Day 3!");
+    day_3::day_3();
 }
