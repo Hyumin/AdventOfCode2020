@@ -1,8 +1,4 @@
 use std::io;
-use std::vec;
-use num;
-use num::clamp;
-
 
 fn process_part_2(arg: &String, x_vel: i32, y_vel :i32) -> i32
 {
@@ -35,7 +31,6 @@ fn process_part_2(arg: &String, x_vel: i32, y_vel :i32) -> i32
         y += 1;
         y_inc += 1;
     }
-    println!("Num trees!{}",trees);
     return trees;
 }
 
@@ -48,10 +43,9 @@ fn process_part_1( arg : &String)
     for line in arg.lines()
     {
         //Skip first check
-        if(y >0)
+        if y >0
         {
             x +=3;
-            println!("le count {}", line.chars().count());
             if x>= line.chars().count()
             {
                 x = x-line.chars().count();
@@ -66,7 +60,6 @@ fn process_part_1( arg : &String)
 
         y += 1;
     }
-    println!("Num trees!{}",trees);
 }
 
 pub fn day_3()
