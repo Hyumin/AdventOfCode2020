@@ -4,6 +4,7 @@ use num;
 
 mod day_3;
 mod day_4;
+mod day_5;
 
 //process input, prints the results
 fn Day1_1ProccessInput( arg: &[i32])
@@ -332,5 +333,7 @@ fn main()
    // println!("Day 3!");
    //day_3::day_3();
 
-    day_4::day_4();
+    //day_4::day_4();
+
+    day_5::day_5();
 }

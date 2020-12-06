@@ -253,7 +253,7 @@ fn part_1( arg: &String) -> i32
     return result;
 }
 //Reads the lines from the terminal and return after entering done identifier
-pub fn get_input( done_iden : &String) -> String
+ fn get_input( done_iden : &String) -> String
 {
     let mut inputStrings = String::new();
     let  doneIdentifier = String::from(done_iden);
