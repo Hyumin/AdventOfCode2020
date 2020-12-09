@@ -92,7 +92,7 @@ fn verifypw_2(arg: &String)->bool
             //Check first letter, see if it starts with a #
             // and check if its followed by six characters
             //check whether those characters are 0-9 or a-f
-           if(word.chars().count()==7)
+           if word.chars().count()==7
            {
                 if Some('#')  == word.chars().nth(0 as usize)
                 {
@@ -107,7 +107,7 @@ fn verifypw_2(arg: &String)->bool
                          _valid_counter +=1;
                        }
                     }
-                    if(_valid_counter == 6)
+                    if _valid_counter == 6
                     {
                         result_counter +=1;
                     }
@@ -126,9 +126,9 @@ fn verifypw_2(arg: &String)->bool
             if word.chars().count() ==9
             {
                 //if we can't convert to a number we'll continue anyway
-                let num : i32 = match word.parse()
+                 match word.parse::<i32>()
                 {
-                    Ok(num)=>num,
+                    Ok(_)=> print!("num conversion succes"),
                     Err(_) =>  continue,
                 };
                 result_counter+=1;
@@ -255,11 +255,11 @@ fn part_1( arg: &String) -> i32
 //Reads the lines from the terminal and return after entering done identifier
  fn get_input( done_iden : &String) -> String
 {
-    let mut inputStrings = String::new();
-    let  doneIdentifier = String::from(done_iden);
+    let mut input_strings = String::new();
+    let  done_identifier = String::from(done_iden);
   
     //Type custom input in the terminal to see how the function behaves with different input
-    println!("Custom input, Please enter input in the terminal to create a string to iterate through. When done type {}",doneIdentifier);
+    println!("Custom input, Please enter input in the terminal to create a string to iterate through. When done type {}",done_identifier);
     loop
     {
       let mut text = String::new();
@@ -269,16 +269,16 @@ fn part_1( arg: &String) -> i32
       .expect("Failed to read line");
   
       //Compare input text with doneidentifier, if true end loop
-      if text.trim() == doneIdentifier
+      if text.trim() == done_identifier
       {
           break;
       }
   
-      inputStrings+= text.trim();
-      inputStrings+= "\n";
+      input_strings+= text.trim();
+      input_strings+= "\n";
     }
 
-    return inputStrings;
+    return input_strings;
 }
 pub fn day_4()
 {

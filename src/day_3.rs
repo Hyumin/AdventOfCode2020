@@ -60,6 +60,7 @@ fn process_part_1( arg : &String)
 
         y += 1;
     }
+    print!("trees {}",trees);
 }
 
 pub fn day_3()

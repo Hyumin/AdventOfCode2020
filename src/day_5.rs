@@ -1,6 +1,5 @@
 use std::io;
 use std::vec;
-use num;
 
 //Reads the lines from the terminal and return after entering done identifier
 fn get_input( done_iden : &String) -> String
@@ -213,7 +212,7 @@ fn process_prt_1(arg:&String)-> i32
         let  temp_result = (row *8) + col;
         println!("result = {}",temp_result);
 
-        if(temp_result>result)
+        if temp_result>result
         {
             result= temp_result;
         }

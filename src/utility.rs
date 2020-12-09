@@ -1,13 +1,14 @@
 
+use std::io;
+use std::vec;
 
 //Reads the lines from the terminal and return after entering done identifier
-pub fn get_input( done_iden : &String) -> &String
+pub fn get_input( done_iden : &String) -> String
 {
-    let mut inputStrings = String::new();
-    let  doneIdentifier = String::from(done_iden);
-  
+    let mut input_strings = String::new();
+
     //Type custom input in the terminal to see how the function behaves with different input
-    println!("Custom input, Please enter input in the terminal to create a string to iterate through. When done type {}",doneIdentifier);
+    println!("Custom input, Please enter input in the terminal to create a string to iterate through. When done type {}",done_iden);
     loop
     {
       let mut text = String::new();
@@ -17,14 +18,31 @@ pub fn get_input( done_iden : &String) -> &String
       .expect("Failed to read line");
   
       //Compare input text with doneidentifier, if true end loop
-      if text.trim() == doneIdentifier
+      if text.trim() == done_iden
       {
           break;
       }
   
-      inputStrings+= text.trim();
-      inputStrings+= "\n";
+      input_strings+= text.trim();
+      input_strings+= "\n";
     }
 
-    return &inputStrings;
+    return input_strings;
+}
+
+pub fn convert_to_uintegers(arg: &String)  ->Vec<u64>
+{
+  let mut return_value = Vec::new();
+  for line in arg.lines()
+  {
+      let number : u64 = match line.trim().parse::<u64>() 
+      {
+          Ok(number) => number,
+          Err(_) => continue,
+      };
+
+      return_value.push(number);
+  }
+
+  return return_value;
 }

@@ -1,6 +1,5 @@
 use std::io;
 use std::vec;
-use regex::Regex;
 
 //Reads the lines from the terminal and return after entering done identifier
 fn get_input( done_iden : &String) -> String
@@ -41,36 +40,63 @@ fn procces_part_1( arg: &String)-> i32
 {
     let mut result = 0;
     let mut bags =vec![];
-    let mut trim_string = arg.replace(&['.',','][..], " ");
+    let  trim_string = arg.replace(&['.',','][..], " ");
 
     for line in trim_string.lines()
     {
 
         let mut iter = line.split_whitespace();
-
-        match iter.next()
-        {
-            Some(value) => println!("next {}", value.to_string()),
-            None => println!("yoink"),
-        }
-        match iter.next()
-        {
-            Some(value) => println!("next2 {}", value.to_string()),
-            None => println!("yoink"),
-        }
         let mut bro = String::new();
-        if iter.next() != Some("bag")
+        let mut strong = iter.next();
+        while strong != Some("bags")
         {
-            match iter.next()
+            match strong
             {
-                Some(value) => bro += value,
+                Some(value) =>
+                { 
+                    bro += value;
+                },
                 None => println!("yoink"),
             }
+            strong = iter.next();
         }
-
-        let re = Regex::new(r"\w{5}").unwrap();
-
-        println!("found match ? {}", re.is_match(line));
+        
+        println!("bro: {}",bro);
+        println!("next{}",iter.next().unwrap());
+        let mut curr_bag = String::new();
+        let mut contains = 0;
+        while strong != None
+        {
+            match strong
+            {
+                Some(value)=>
+                {
+                    //Is value a
+                     match  value.parse::<i32>()
+                    {
+                        Ok(n)=> 
+                        {
+                            contains = n;
+                            strong = iter.next();
+                            continue;
+                        },
+                        Err(_) => println!("nan"),
+                    };
+                    
+                    //is it bags or bag
+                    if value == "bags"|| value == "bag"
+                    {
+                        
+                    }
+                    else
+                    {
+                        curr_bag += value;
+                    }
+                },
+                None => println!("endo"),
+            }
+            strong = iter.next();
+        }
 
         //let mut bag = Bag{"bro" ,0};
         let mut stringyboi = String::new();
@@ -94,7 +120,7 @@ fn procces_part_1( arg: &String)-> i32
 }
 
 
-pub fn Day_7()
+pub fn day_7()
 {
     println!("Day 7");
     let sample_input = String::from("light red bags contain 1 bright white bag, 2 muted yellow bags.
