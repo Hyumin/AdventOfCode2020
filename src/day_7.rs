@@ -1,34 +1,9 @@
 use std::io;
 use std::vec;
+#[path =  "utility.rs"] 
+mod utility;
 
-//Reads the lines from the terminal and return after entering done identifier
-fn get_input( done_iden : &String) -> String
-{
-    let mut input_strings = String::new();
-    let  done_identifier = String::from(done_iden);
-  
-    //Type custom input in the terminal to see how the function behaves with different input
-    println!("Custom input, Please enter input in the terminal to create a string to iterate through. When done type {}",done_iden);
-    loop
-    {
-      let mut text = String::new();
-  
-      io::stdin().read_line(&mut text)
-      .ok()
-      .expect("Failed to read line");
-  
-      //Compare input text with doneidentifier, if true end loop
-      if text.trim() == done_identifier
-      {
-          break;
-      }
-  
-      input_strings+= text.trim();
-      input_strings+= "\n";
-    }
 
-    return input_strings;
-}
 struct Bag
 {
     name : String,
@@ -86,7 +61,7 @@ fn procces_part_1( arg: &String)-> i32
                     //is it bags or bag
                     if value == "bags"|| value == "bag"
                     {
-                        
+                        println!("we have found bag {} for the bag {}", curr_bag, bro);
                     }
                     else
                     {

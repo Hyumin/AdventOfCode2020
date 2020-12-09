@@ -11,7 +11,7 @@ mod day_8;
 mod day_9;
 pub mod utility;
 //process input, prints the results
-fn Day1_1ProccessInput( arg: &[i32])
+fn day1_1procces_input( arg: &[i32])
 {
     if arg.len() ==0
     {
@@ -38,7 +38,7 @@ fn Day1_1ProccessInput( arg: &[i32])
     }
 }
 //process input, prints the results
-fn Day1_2ProccessInput( arg: &[i32])
+fn day1_2proccess_input( arg: &[i32])
 {
     if arg.len() ==0
     {
@@ -69,17 +69,17 @@ fn Day1_2ProccessInput( arg: &[i32])
 }
 
 
-fn Day1()
+fn day_1()
 {
   //Default input
   let integers = vec![1721,979,366,299,675,1456];
-  Day1_1ProccessInput(&integers);
+  day1_1procces_input(&integers);
 
-  let mut inputIntegers = vec![];
-  let  doneIdentifier = String::from("done");
+  let mut input_integers = vec![];
+  let  done_identifier = String::from("done");
 
   //Type custom input in the terminal to see how the function behaves with different input
-  println!("Custom input, Please enter numbers in the terminal to create an array. When done type {}",doneIdentifier);
+  println!("Custom input, Please enter numbers in the terminal to create an array. When done type {}",done_identifier);
   loop
   {
     let mut text = String::new();
@@ -89,7 +89,7 @@ fn Day1()
     .expect("Failed to read line");
 
     //Compare input text with doneidentifier, if true end loop
-    if text.trim() == doneIdentifier
+    if text.trim() == done_identifier
     {
         break;
     }
@@ -100,11 +100,11 @@ fn Day1()
         Ok(num)=>num,
         Err(_) =>  continue,
     };
-    inputIntegers.push(num);
+    input_integers.push(num);
   }
 
-  Day1_1ProccessInput(&inputIntegers);
-  Day1_2ProccessInput(&inputIntegers);
+  day1_1procces_input(&input_integers);
+  day1_2proccess_input(&input_integers);
 }
 
 fn day2_process_string_2(arg: &str)->i32
@@ -251,10 +251,10 @@ fn day2_process_string_1(arg: &str) -> i32
     return_value= num::clamp(return_value,0,1);
     return return_value;
 }
-fn Day2_2(arg: &String)
+fn day2_2(arg: &String)
 {
 
-    let mut validPasswords = 0;
+    let mut valid_passwords = 0;
     //Iterate on input
     //Expecting string format to be 1-3  a: abcde 
     //Range = 1-3 = minimum of 1 maximum of 3 of 
@@ -266,14 +266,14 @@ fn Day2_2(arg: &String)
     let mut lines = arg.lines();
     for line in lines
     {
-        validPasswords += day2_process_string_2(&line);
+        valid_passwords += day2_process_string_2(&line);
     }
-    println!("Valid passwords = {}",validPasswords);
+    println!("Valid passwords = {}",valid_passwords);
 }
-fn Day2_1(arg: &String)
+fn day2_1(arg: &String)
 {
 
-    let mut validPasswords = 0;
+    let mut valid_passwords = 0;
     //Iterate on input
     //Expecting string format to be 1-3  a: abcde 
     //Range = 1-3 = minimum of 1 maximum of 3 of 
@@ -285,12 +285,12 @@ fn Day2_1(arg: &String)
     let mut lines = arg.lines();
     for line in lines
     {
-        validPasswords += day2_process_string_1(&line);
+        valid_passwords += day2_process_string_1(&line);
     }
-    println!("Valid passwords = {}",validPasswords);
+    println!("Valid passwords = {}",valid_passwords);
 }
 
-fn Day2()
+fn day_2()
 {
     let  sample_input = String::from(
     "1-3 a: abcde
@@ -298,14 +298,14 @@ fn Day2()
     2-9 c: ccccccccc");
     println!("day 2 part 1");
     println!("Testing sample input Expected result is 2");
-    Day2_2(&sample_input);
+    day2_2(&sample_input);
 
 
-  let mut inputStrings = String::new();
-  let  doneIdentifier = String::from("done123");
+  let mut input_strings = String::new();
+  let  done_identifier = String::from("done123");
 
   //Type custom input in the terminal to see how the function behaves with different input
-  println!("Custom input, Please enter input in the terminal to create a string to iterate through. When done type {}",doneIdentifier);
+  println!("Custom input, Please enter input in the terminal to create a string to iterate through. When done type {}",done_identifier);
   loop
   {
     let mut text = String::new();
@@ -315,15 +315,15 @@ fn Day2()
     .expect("Failed to read line");
 
     //Compare input text with doneidentifier, if true end loop
-    if text.trim() == doneIdentifier
+    if text.trim() == done_identifier
     {
         break;
     }
 
-    inputStrings+= text.trim();
-    inputStrings+= "\n";
+    input_strings+= text.trim();
+    input_strings+= "\n";
   }
-  Day2_2(&inputStrings);
+  day2_2(&input_strings);
 }
 
 fn main() 
@@ -340,8 +340,8 @@ fn main()
     //day_4::day_4();
 
     //day_5::day_5();
-
-    //day_7::day_7();
+    day_6::day_6();
+   // day_7::day_7();
     //day_8::day_8();
-    day_9::day_9();
+    //day_9::day_9();
 }
