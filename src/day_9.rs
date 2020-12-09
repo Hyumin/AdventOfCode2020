@@ -1,4 +1,3 @@
-use std::vec;
 use Iterator;
 
 #[path =  "utility.rs"] 
@@ -6,7 +5,6 @@ mod utility;
 
 fn process_part_2(arg : &Vec<u64>, target_number: u64) -> u64
 {
-    let mut result=0;
     let mut range= Vec::new();
     range.push(target_number);
     //iterate and figure out what range of numbers equate to target_number
@@ -38,7 +36,7 @@ fn process_part_2(arg : &Vec<u64>, target_number: u64) -> u64
 
     range.sort_by(|a, b| b.cmp(a));
     println!("range smalles {} range lowest{}", range[0],range[range.len()-1]);
-    result = range[0] + range[range.len()-1];
+    let result = range[0] + range[range.len()-1];
 
     return result;
 }
@@ -63,7 +61,6 @@ fn process_part_1(arg : &Vec<u64>, range : i32)-> u64
             let mut sum_detected = false;
             for i in 0..preamble.len()
             {
-                let mut iter = preamble.first();
                 for j in i..preamble.len()
                 {
                     if (preamble[i] +preamble[j]) == *number
