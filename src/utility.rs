@@ -46,3 +46,19 @@ pub fn convert_to_uintegers(arg: &String)  ->Vec<u64>
 
   return return_value;
 }
+pub fn convert_to_uintegers_32(arg: &String)  ->Vec<u32>
+{
+  let mut return_value = Vec::new();
+  for line in arg.lines()
+  {
+      let number : u32 = match line.trim().parse::<u32>() 
+      {
+          Ok(number) => number,
+          Err(_) => continue,
+      };
+
+      return_value.push(number);
+  }
+
+  return return_value;
+}
