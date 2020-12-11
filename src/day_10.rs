@@ -138,7 +138,7 @@ fn process_part_2(arg :&String) -> u64
         {
             memo[i]+= memo[i-1];
         }
-        //Check 1 numbers ahead
+        //Check 1 numbers before
         if  i >1 
         {
             diff =number-vector[i-2] ;
@@ -147,7 +147,7 @@ fn process_part_2(arg :&String) -> u64
                 memo[i]+= memo[i-2];
             }
         }
-        //Check 2 numbers ahead
+        //Check 2 numbers before
         if  i >2
         { 
             diff =number-vector[i-3];

@@ -3,25 +3,30 @@ use std::vec;
 #[path =  "utility.rs"] 
 mod utility;
 
-
+struct string_int_pair
+{
+    string: String,
+    integer : i32,
+}
 struct Bag
 {
     name : String,
-    can_contain : i32,
+    can_contain : Vec<string_int_pair>,
 }
+
 
 
 fn procces_part_1( arg: &String)-> i32
 {
     let mut result = 0;
-    let mut bags =vec![];
     let  trim_string = arg.replace(&['.',','][..], " ");
+    let mut bags = Vec::new();
 
     for line in trim_string.lines()
     {
 
         let mut iter = line.split_whitespace();
-        let mut bro = String::new();
+        let mut curr_bag = Bag{name: String::new(), can_contain: Vec::new()};
         let mut strong = iter.next();
         while strong != Some("bags")
         {
@@ -29,17 +34,16 @@ fn procces_part_1( arg: &String)-> i32
             {
                 Some(value) =>
                 { 
-                    bro += value;
+                    curr_bag.name += value;
                 },
                 None => println!("yoink"),
             }
             strong = iter.next();
         }
         
-        println!("bro: {}",bro);
+        println!("bag name is : {}",curr_bag.name);
         println!("next{}",iter.next().unwrap());
-        let mut curr_bag = String::new();
-        let mut contains = 0;
+        let mut string_int_pair = string_int_pair{string: String::new(), integer : 0};
         while strong != None
         {
             match strong
@@ -51,7 +55,7 @@ fn procces_part_1( arg: &String)-> i32
                     {
                         Ok(n)=> 
                         {
-                            contains = n;
+                            string_int_pair.integer = n;
                             strong = iter.next();
                             continue;
                         },
@@ -61,34 +65,29 @@ fn procces_part_1( arg: &String)-> i32
                     //is it bags or bag
                     if value == "bags"|| value == "bag"
                     {
-                        println!("we have found bag {} for the bag {}", curr_bag, bro);
+                         //curr_bag.can_contain.push(string_int_pair);
+                        
+                        string_int_pair.string =  String::new();
                     }
                     else
                     {
-                        curr_bag += value;
+                        string_int_pair.string += value;
                     }
                 },
                 None => println!("endo"),
             }
             strong = iter.next();
         }
-
-        //let mut bag = Bag{"bro" ,0};
-        let mut stringyboi = String::new();
-        //Replace , and dot with whitespaces so we can just look for specific words for it.
-        for word in iter
+        bags.push(curr_bag);
+    }
+    for b in bags
+    {
+        print!("Bagname :{} can contains:",b.name);
+        for sp in b.can_contain
         {
-            //look for the word bag, and then store
-            if word == "bags"|| word == "bag" 
-            {
-                //Somehow get were we are and split the prev 2 words from any word bag
-               // bags.push(word);
-                bags.push(stringyboi);
-                stringyboi = String::new();
-                println!("{}",word);
-            }
-            stringyboi += word;
+            print!("{} amount of {}",sp.integer,sp.string);
         }
+        println!(" ");
     }
 
     return result;
