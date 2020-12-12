@@ -11,6 +11,7 @@ mod day_8;
 mod day_9;
 mod day_10;
 mod day_11;
+mod day_12;
 pub mod utility;
 //process input, prints the results
 fn day1_1procces_input( arg: &[i32])
@@ -347,5 +348,6 @@ fn main()
     //day_8::day_8();
     //day_9::day_9();
    // day_10::day_10();
-   day_11::day_11();
+   //day_11::day_11();
+   day_12::day_12();
 }
