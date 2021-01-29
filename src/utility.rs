@@ -1,6 +1,7 @@
 
 use std::io;
 use std::vec;
+use std::{fs, io::Result};
 
 //Reads the lines from the terminal and return after entering done identifier
 pub fn get_input( done_iden : &String) -> String
@@ -61,4 +62,20 @@ pub fn convert_to_uintegers_32(arg: &String)  ->Vec<u32>
   }
 
   return return_value;
+}
+
+pub fn get_input_from_filename( filepath : &String) ->String
+{
+  let file_content = fs::read_to_string(filepath);
+
+  match file_content
+  {
+    Ok(_)=> (),
+    Err(e)=> {
+      eprintln!("Error: {}",e);
+      return String::from(" ");
+    },
+  }
+
+  return file_content.unwrap();
 }

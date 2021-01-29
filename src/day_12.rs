@@ -38,8 +38,6 @@ fn process_part_1(arg :&String) -> u32
         {
             let x_maybeh = num::clamp(direction.cos(), -1.0, 1.0);
             let y_maybeh = num::clamp(direction.sin(), -1.0, 1.0);
-
-            println!("x maybeh{} y maybeh{}",x_maybeh,y_maybeh);
             
              x += x_maybeh.round() as i32 * value;  
              y += y_maybeh.round() as i32 * value;
@@ -72,7 +70,6 @@ fn process_part_1(arg :&String) -> u32
             x += value;
         }
     }
-    println!("x is {}, y is{}",x,y);
     let abs = i32::abs(x) +i32::abs(y);
     return abs as u32;
 }
@@ -155,7 +152,6 @@ fn process_part_2(arg :&String) -> u32
             wp_x += value;
         }
     }
-    println!("x is {}, y is{}",x,y);
     let abs = i32::abs(x) +i32::abs(y);
     return abs as u32;
 }
@@ -171,8 +167,10 @@ F11");
     assert_eq!(process_part_1(&sample_input),25);
     assert_eq!(process_part_2(&sample_input),286);
 
-    let input = utility::get_input(&String::from("done"));
+    //let input = utility::get_input(&String::from("done"));
+    let real_input = utility::get_input_from_filename(&String::from("input/day_12.txt"));
 
-    print!("result = {}",process_part_1(&input));
-    print!("result = {}",process_part_2(&input));
+    print!("result day 12 = {}",process_part_1(&real_input));
+    print!(" |  {}",process_part_2(&real_input));
+    println!(" ");
 }
