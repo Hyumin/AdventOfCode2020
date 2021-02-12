@@ -550,11 +550,11 @@ fn process_part_1(arg: &String)->u128
 
 pub fn day_18()
 {
-    let test_input = String::from("5 * 9 * (7 * 3 * 3 + 9 * 3 + (8 + 6 * 4))");
+   /* let test_input = String::from("5 * 9 * (7 * 3 * 3 + 9 * 3 + (8 + 6 * 4))");
     let test_input_1_2 = String::from("6 + ((3 + 6 + 5) * 4) * (4 + 3) * 8 + 6 + 6");
     let test_input_1_3 = String::from("7 + 6 + (9 + 4 * (8 + 7 * 8 + 2 * 7 * 9) * 9 + 5 + 3) + 6 + (7 + 5 + 7 * 9 + 9) * ((4 + 9 * 3 * 4 * 3) + 6 * 8)");
     let test_input_1_5 = String::from("8 * 3 + (2 + 9 + 8 * 5) * 8 * 2 + (4 * 8 * 7 + 5)");
-    let test_input_1_4 = String::from("6 + 5 * 3 + 7 + 8 * 2 ");
+    let test_input_1_4 = String::from("6 + 5 * 3 + 7 + 8 * 2 ");*/
     
    // assert_eq!(process_part_1(&test_input),12240);
     //assert_eq!(process_part_1(&test_input_1_3),3410786448);
@@ -563,7 +563,7 @@ pub fn day_18()
     //assert_eq!(process_part_2(&test_input_1_4),396);
     //assert_eq!(process_part_2(&test_input),669060);
     //assert_eq!(process_part_2(&test_input_1_3),7920771312);
-    assert_eq!(process_part_2(&test_input_1_5),2420992);
+    //assert_eq!(process_part_2(&test_input_1_5),2420992);
    // println!("yeet");
 
     let input = utility::get_input_from_filename(&String::from("input/day_18.txt"));

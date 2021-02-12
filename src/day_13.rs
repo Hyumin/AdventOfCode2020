@@ -131,12 +131,17 @@ fn procces_part_2(arg:&String) ->u64
 pub fn day_13()
 {
     let sample_input = String::from("939
-7,13,x,x,59,x,31,19");
+    7,13,x,x,59,x,31,19");
+    let test_input_2 = String::from("123
+    17,x,13,19");
 
-    assert_eq!(process_part_1(&sample_input),295);
-   // assert_eq!(process_part_2(&sample_input),1068781);
+   // assert_eq!(procces_part_2(&sample_input),1068781);
+   // assert_eq!(procces_part_2(&test_input_2),3417);
 
     let input = utility::get_input_from_filename(&String::from("input/day_13.txt"));
-    //println!("Day 13 result: {} |{}",process_part_1(&input),procces_part_2(&input));
+/*
+    let result_1 = process_part_1(&input);
+    let result_2 = process_part_1(&input);
+    println!("Day 13 result: {} |{}",result_1,result_2);*/
 
 }
