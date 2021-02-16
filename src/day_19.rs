@@ -95,7 +95,7 @@ fn check_rule_return_index (line: &String, index: usize, key :i32, rules : &Hash
     {
         //println!("{} or succeeded",key);
     }
-
+  
     return curr_index as i32;
 }
 fn check_rule_return_index_prime (line: &String, index: usize, key :i32, rules : &HashMap<i32,Regel>)->i32
@@ -266,8 +266,15 @@ fn check_rule_return_index_2 (line: &String, index: usize, key :i32, rules : &Ha
 }
 
 //uber hardcoded function but yolo
-fn fortytwo(line: &String, index: usize, rules : & HashMap<i32,Regel>)->i32
+fn fortytwo(line: &String, index: usize, rules : & HashMap<i32,Regel>)-> [i32; 4]
 {
+    let mut result : [i32; 4] = [-1; 4];
+    
+    for i in 0..4
+    {
+        result[i] = -1;
+    }
+
     let rule = rules.get(&42).unwrap();
 
     let prime = rule.rules_primary.clone();
@@ -275,49 +282,101 @@ fn fortytwo(line: &String, index: usize, rules : & HashMap<i32,Regel>)->i32
 
     let mut index_1 = index as i32;
     let mut index_2 = index as i32;
+    let mut index_prim_2 = index as i32;
+    let mut index_or_2 = index as i32;
 
     for i in 0..prime.len()
     {
-        let res = check_rule_return_index_prime(line,index_1 as usize, prime[i],rules);
+        let mut res = -1;
+        let mut res_2 = -1; 
+        if index_1>= 0
+        {
+           res = check_rule_return_index_prime(line,index_1 as usize, prime[i],rules);
+        }
+
+        if index_prim_2 >=0
+        {
+            res_2 = check_rule_return_index(line, index_prim_2 as usize,prime[i], rules);
+        }
+        
         if res == -1
         {
             index_1 = -1;
-            break;
+            
         }
         else if res != -1
         {
             index_1 = res;
         }
+        if res_2 == -1
+        {
+            index_prim_2 = -1;
+        }
+        else if res_2 != -1 
+        {
+            index_prim_2 = res;
+        }
+        if res + res_2 == -2
+        {
+            break;
+        }
+      
     }
 
     for i in 0..or.len()
     {
-        let res = check_rule_return_index_prime(line,index_2 as usize, or[i],rules);
+        let mut res = -1;
+        let mut res_2 = -1; 
+        if index_2>= 0
+        {
+           res = check_rule_return_index_prime(line,index_2 as usize, or[i],rules);
+        }
+
+        if index_or_2 >= 0
+        {
+            res_2 = check_rule_return_index(line, index_or_2 as usize,or[i], rules);
+        }
+        
         if res == -1
         {
             index_2 = -1;
-            break;
         }
         else if res != -1
         {
             index_2 = res;
         }
-    }
-    if index_1 != -1
-    {
-        return index_1;
-    }
-    if index_2 != -1
-    {
-        return index_2;
+        if res_2 == -1
+        {
+            index_or_2 = -1;
+        }
+        else if res_2 != -1 
+        {
+            index_or_2 = res;
+        }
+        if res + res_2 == -2
+        {
+            break;
+        }
+      
     }
 
+    result[0] = index_1;
+    result[1] = index_prim_2;
+    result[2] = index_2;
+    result[3] = index_or_2;
 
-    return -1;
+    return result;
 }
 //uber hardcoded function but yolo
-fn thirthyone(line: &String, index: usize, rules : & HashMap<i32,Regel>)->i32
+fn thirthyone(line: &String, index: usize, rules : & HashMap<i32,Regel>)-> [i32; 4]
 {
+    let mut result : [i32; 4] = [-1; 4];
+    
+    for i in 0..4
+    {
+        result[i] = -1;
+    }
+
     let rule = rules.get(&31).unwrap();
 
     let prime = rule.rules_primary.clone();
@@ -325,47 +384,90 @@ fn thirthyone(line: &String, index: usize, rules : & HashMap<i32,Regel>)->i32
 
     let mut index_1 = index as i32;
     let mut index_2 = index as i32;
+    let mut index_prim_2 = index as i32;
+    let mut index_or_2 = index as i32;
 
     for i in 0..prime.len()
     {
-        let res = check_rule_return_index_prime(line,index_1 as usize, prime[i],rules);
+        let mut res = -1;
+        let mut res_2 = -1; 
+        if index_1>= 0
+        {
+           res = check_rule_return_index_prime(line,index_1 as usize, prime[i],rules);
+        }
+
+        if index_prim_2 >=0
+        {
+            res_2 = check_rule_return_index(line, index_prim_2 as usize,prime[i], rules);
+        }
+        
         if res == -1
         {
             index_1 = -1;
-            break;
+            
         }
         else if res != -1
         {
             index_1 = res;
         }
+        if res_2 == -1
+        {
+            index_prim_2 = -1;
+        }
+        else if res_2 != -1 
+        {
+            index_prim_2 = res;
+        }
+        if res + res_2 == -2
+        {
+            break;
+        }
+      
     }
 
     for i in 0..or.len()
     {
-        let res = check_rule_return_index_prime(line,index_2 as usize, or[i],rules);
+        let mut res = -1;
+        let mut res_2 = -1; 
+        if index_2>= 0
+        {
+           res = check_rule_return_index_prime(line,index_2 as usize, or[i],rules);
+        }
+
+        if index_or_2 >= 0
+        {
+            res_2 = check_rule_return_index(line, index_or_2 as usize,or[i], rules);
+        }
+        
         if res == -1
         {
             index_2 = -1;
-            break;
         }
         else if res != -1
         {
             index_2 = res;
         }
+        if res_2 == -1
+        {
+            index_or_2 = -1;
+        }
+        else if res_2 != -1 
+        {
+            index_or_2 = res;
+        }
+        if res + res_2 == -2
+        {
+            break;
+        }
+      
     }
 
-    if index_2 != -1
-    {
-        return index_2;
-    }
-    if index_1 != -1
-    {
-        return index_1;
-    }
-   
+    result[0] = index_1;
+    result[1] = index_prim_2;
+    result[2] = index_2;
+    result[3] = index_or_2;
 
-
-    return -1;
+    return result;
 }
 
 //hardcoded checks rule 0 which consists of rule 8, and rule 11
@@ -387,11 +489,23 @@ fn check_rule_brutal_force_part_2(line: &String , rules : &HashMap<i32,Regel>)->
         let  index = rule_eight_indices.last().unwrap();
         let res = fortytwo(&line, *index as usize, rules);
 
-        if res != -1
+        let mut num_minus_ones = 0;
+        for i in 0..4
         {
-            rule_eight_indices.push(res);
+            if res[i] != -1
+            {
+                rule_eight_indices.push(res[i]);
+                if res[i] == 0
+                {
+                    println!("should not be 0");
+                }
+            }
+            else
+            {
+                num_minus_ones +=1;
+            }
         }
-        else
+        if num_minus_ones ==4
         {
             break;
         }
@@ -401,29 +515,39 @@ fn check_rule_brutal_force_part_2(line: &String , rules : &HashMap<i32,Regel>)->
     //let mut rule_31_indices = Vec::new();
     //println!("indices found {}", rule_eight_indices.len());
     //then we should execute rule nr 11 starting from all these indices
+
+    let mut victories = vec![0; 0];
     for i in 1..rule_eight_indices.len()
     {
-        let mut index  = rule_eight_indices[i];
-        for j in 0..i
-        {
-            let res_31 =  thirthyone(&line, index as usize, rules);
-            if res_31 !=-1
+        let mut index : [i32; 4] = [rule_eight_indices[i]; 4];
+       
+            for j in 0..i
             {
-                //println!("line {} rule 31 from index {} at {} res = {} line count = {}",line,index,i, res_31,line.chars().count() );
-                //if it is valid see if its the same size as our string>= line.chars().count()
-                if res_31 as usize  == (line.chars().count())
+                for w in 0..4
                 {
-                    //return result cause its valid
-                    return res_31;
-                }
-                else
+                if index[w] >= 0
                 {
-                    index = res_31;
-                }
-            }
-            else
-            {
-                break;
+                    let res_31 =  thirthyone(&line, index[w] as usize, rules);
+          
+                    if res_31[w] !=-1
+                    {
+                        //println!("line {} rule 31 from index {} at {} res = {} line count = {}",line,index,i, res_31,line.chars().count() );
+                        //if it is valid see if its the same size as our string>= line.chars().count()
+                        if res_31[w] as usize  == (line.chars().count())
+                        {
+                            //return result cause its valid
+                            victories.push(res_31[w]);
+                        }
+                        else
+                        {
+                            index[w] = res_31[w];
+                        }
+                    }
+                    else
+                    {
+                        index[w] = -1;
+                    }
+             }
             }
         }
     }
@@ -455,7 +579,10 @@ fn check_rule_brutal_force_part_2(line: &String , rules : &HashMap<i32,Regel>)->
          i+=1;
          
      } */
-
+     if victories.len()> 0
+     {
+         return victories[0];
+     }
 
     return return_value;
 }
@@ -655,7 +782,6 @@ fn process_part_2(input: &String) ->u32
             {
                 println!("failure on {} ",line);
             }*/
-
             let v2 = check_rule_brutal_force_part_2(&line.trim().to_string(), &rules_map);
             if v2 != -1
             {
